@@ -1,4 +1,4 @@
-<p align="center"><img src="https://github.com/sramjee/_git/blob/main/eclipse-workspace/test-refresh/src/main/resources/images/adarj-logo.jpg?raw=true" alt="AdArj Inc." height="200"></p>
+<p align="center"><img src="https://github.com/sramjee/_git/blob/main/eclipse-workspace/test-refresh/src/main/resources/images/Origami%20creation%20of%20a%20bird.gif?raw=true"></p>
 
 ## Benchmarks
 
