@@ -6,3 +6,8 @@ $ git rm -r --cached .
 $ git add .
 ### ...and commit them!
 $ git commit -m "Clean up ignored files"
+
+
+# For MAC
+ssh-keygen -t ed25519 -C “srinivasan.ramjee@gmail.com”
+git remote set-url origin git@github.com:sramjee/_git
