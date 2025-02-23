@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: camel-test
+
+logging:
+  pattern:
+    console: "%msg%n"
+  level:
+    org:
+      apache:
+        camel: DEBUG
+
+camel:
+  springboot:
+    main-run-controller: true
+    routes-include-pattern: classpath:routes.yaml  # Load routes from an external YAML file

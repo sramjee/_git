@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<!DOCTYPE coherence SYSTEM "coherence.dtd">
+<coherence>
+    <cluster-name>my-cluster</cluster-name>
+
+    <!-- Multicast and Unicast Configuration -->
+    <network-config>
+        <socket-provider>
+            <class-name>com.tangosol.net.DefaultSocketProviderFactory</class-name>
+        </socket-provider>
+
+        <member-identity>
+            <member-name>CacheNode</member-name>
+        </member-identity>
+
+        <!-- Multicast Configuration -->
+        <multicast-listener>
+            <address>239.192.0.1</address>
+            <port>7579</port>
+            <time-to-live>4</time-to-live>
+            <enabled>true</enabled> <!-- Set to false if you want unicast -->
+        </multicast-listener>
+
+        <!-- Unicast Listener -->
+        <unicast-listener>
+            <address>127.0.0.1</address>
+            <port>7579</port>
+            <auto-adjust>true</auto-adjust>
+        </unicast-listener>
+    </network-config>
+
+    <!-- Caching Scheme Configuration -->
+    <caching-schemes>
+        <distributed-scheme>
+            <scheme-name>default-distributed</scheme-name>
+            <service-name>DistributedCache</service-name>
+            <backing-map-scheme>
+                <local-scheme/>
+            </backing-map-scheme>
+        </distributed-scheme>
+
+        <replicated-scheme>
+            <scheme-name>default-replicated</scheme-name>
+            <service-name>ReplicatedCache</service-name>
+            <backing-map-scheme>
+                <local-scheme/>
+            </backing-map-scheme>
+        </replicated-scheme>
+    </caching-schemes>
+
+    <!-- Cache Configuration -->
+    <caches>
+        <!-- Example Cache -->
+        <cache>
+            <cache-name>example-cache</cache-name>
+            <scheme-name>default-distributed</scheme-name>
+        </cache>
+    </caches>
+</coherence>

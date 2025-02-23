@@ -1,0 +1,28 @@
+@startuml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+Person(customer, "Customer", "A user of our e-commerce system")
+
+System_Boundary(ecommerce_system, "E-commerce System") {
+    Container(web_app, "Web Application", "Java, Spring MVC", "Allows customers to browse products and place orders")
+    Container(mobile_app, "Mobile App", "React Native", "Provides a mobile interface for customers")
+    Container(api_gateway, "API Gateway", "Node.js, Express", "Handles API requests and routes them to appropriate services")
+    Container(product_service, "Product Service", "Java, Spring Boot", "Manages product information and inventory")
+    Container(order_service, "Order Service", "Python, Flask", "Processes and manages customer orders")
+    ContainerDb(database, "Database", "PostgreSQL", "Stores product, order, and customer data")
+}
+
+System_Ext(payment_provider, "Payment Provider", "Processes payments for orders")
+
+Rel(customer, web_app, "Uses", "HTTPS")
+Rel(customer, mobile_app, "Uses")
+Rel(web_app, api_gateway, "Makes API calls to", "JSON/HTTPS")
+Rel(mobile_app, api_gateway, "Makes API calls to", "JSON/HTTPS")
+Rel(api_gateway, product_service, "Routes product requests to", "JSON/HTTPS")
+Rel(api_gateway, order_service, "Routes order requests to", "JSON/HTTPS")
+Rel(product_service, database, "Reads from and writes to", "SQL")
+Rel(order_service, database, "Reads from and writes to", "SQL")
+Rel(order_service, payment_provider, "Sends payment requests to", "JSON/HTTPS")
+
+LAYOUT_WITH_LEGEND()
+@enduml

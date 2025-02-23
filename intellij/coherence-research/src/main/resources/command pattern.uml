@@ -1,0 +1,37 @@
+@startuml
+' Command Interface
+interface Command {
+    +execute()
+}
+
+' ConcreteCommand Classes
+class LightOnCommand {
+    -light: Light
+    +execute()
+}
+
+class LightOffCommand {
+    -light: Light
+    +execute()
+}
+
+' Receiver Class
+class Light {
+    +turnOn()
+    +turnOff()
+}
+
+' Invoker Class
+class RemoteControl {
+    -command: Command
+    +setCommand()
+    +pressButton()
+}
+
+' Relationships
+Command <|.. LightOnCommand
+Command <|.. LightOffCommand
+LightOnCommand --> Light
+LightOffCommand --> Light
+RemoteControl --> Command
+@enduml

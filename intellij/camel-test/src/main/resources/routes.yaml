@@ -1,0 +1,15 @@
+- templated-route:
+    route-template-ref: fileRouteTemplate
+    parameters:
+      - name: fileName
+        value: data.csv
+      - name: fileType
+        value: csv
+
+- templated-route:
+    route-template-ref: fileRouteTemplate
+    parameters:
+      - name: fileName
+        value: data.psv
+      - name: fileType
+        value: psv
